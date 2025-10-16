@@ -19,7 +19,7 @@ export default {
 
     // Execute Python code
     if (url.pathname === "/run") {
-      const result = await sandbox.exec('python3 -c "print(3 + 3)"');
+      const result = await sandbox.exec('python3 -c "print(2 + 3)"');
       return Response.json({
         output: result.stdout,
         error: result.stderr,
@@ -30,7 +30,7 @@ export default {
 
     // Work with files
     if (url.pathname === "/file") {
-      await sandbox.writeFile("/workspace/hello.txt", "Hello, CF Sandbox!");
+      await sandbox.writeFile("/workspace/hello.txt", "Hello, Stranger!");
       const file = await sandbox.readFile("/workspace/hello.txt");
       return Response.json({
         content: file.content,
